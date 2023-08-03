@@ -1,11 +1,13 @@
 #include <SFML\Graphics.hpp>
 #include "player.h"
+#include "background-manager.h"
 
 const int WIDTH = 800;
-const int HEIGHT = 600;
+const int HEIGHT = 500;
 const std::string TITLE = "Flappy Bird";
 sf::RenderWindow* window;
 Player player(WIDTH/3, HEIGHT/2, 0.05f);
+BackgroundManager* backgroundManager;
 
 void update();
 void render();
@@ -13,6 +15,7 @@ void movePlayer();
 
 int main() {
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE);
+	backgroundManager = new BackgroundManager(window);
 	sf::Event windowEvent;
 
 	bool isReleased = true;
@@ -55,6 +58,7 @@ void update()
 
 void render()
 {
+	backgroundManager->drawNight();
 	window->draw(player);
 }
 

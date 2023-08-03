@@ -1,9 +1,9 @@
 ﻿  main.cpp
-D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(8,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(63,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(9,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(67,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  5 of 84 functions ( 6.0%) were compiled, the rest were copied from previous compilation.
+  4 of 90 functions ( 4.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   flappy-bird-SFML.vcxproj -> D:\Projects\flappy-bird-SFML\flappy-bird-SFML\Release\flappy-bird-SFML.exe
