@@ -59,6 +59,7 @@ void update()
 void render()
 {
 	backgroundManager->drawNight();
+	backgroundManager->drawGround();
 	window->draw(player);
 }
 
