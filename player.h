@@ -1,22 +1,25 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
-class Player
+class Player : public sf::RectangleShape
 {
 public:
-	Player();
-	Player(int x, int y);
+	Player(int x = 0, int y = 0, int speed = 0);
 
-	int getX();
-	void setX(int x);
-
-	int getY();
-	void setY(int y);
+	double getSpeed();
+	void setSpeed(double speed);
 
 	sf::Sprite getSprite();
+	double getGravity();
+
+	void flap();
 
 private:
-	int x, y;
+	const int width = 32;
+	const int height = 32;
+	double speed;		//vertical speed
+	const double gravity = 2;
+	int mass = 1;
 	sf::Sprite sprite;
 	sf::Texture texture;
 };

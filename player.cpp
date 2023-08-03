@@ -1,33 +1,36 @@
 #include "player.h"
 
-Player::Player()
+Player::Player(int x, int y, int speed)
 {
-	this->x = 0;
-	this->y = 0;
+	this->setSize(sf::Vector2f(width, height));
+	this->setPosition(x, y);
+	this->speed = speed;
 	this->texture.loadFromFile("assets\\sprites\\yellowbird-upflap.png");
-	this->sprite.setTexture(texture);
+	this->setTexture(&texture);
 }
 
-Player::Player(int x, int y)
+double Player::getGravity() 
 {
-	this->x = x;
-	this->y = y;
-	this->texture.loadFromFile("assets\\sprites\\yellowbird-upflap.png");
-	this->sprite.setTexture(texture);
+	return gravity;
 }
 
-int Player::getX() {
-	return x;
-}
-void Player::setX(int x) {
-	this->x = x;
+void Player::flap()
+{
+	if (speed <= 0)
+		speed = 0.75f;
+	else
+		speed += 0.25f;
+	move(0, speed);
 }
 
-int Player::getY() {
-	return y;
+double Player::getSpeed()
+{
+	return speed;
 }
-void Player::setY(int y) {
-	this->y = y;
+
+void Player::setSpeed(double speed)
+{
+	this->speed = speed;
 }
 
 sf::Sprite Player::getSprite() {

@@ -5,28 +5,37 @@ const int WIDTH = 800;
 const int HEIGHT = 600;
 const std::string TITLE = "Flappy Bird";
 sf::RenderWindow* window;
-Player player;
+Player player(WIDTH/3, HEIGHT/2, 0.05f);
 
 void update();
 void render();
+void movePlayer();
 
 int main() {
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE);
 	sf::Event windowEvent;
 
+	bool isReleased = true;
 	while (window->isOpen())
 	{
 		window->clear();
 
 		while (window->pollEvent(windowEvent))
 		{
-			switch (windowEvent.type)
-			{
-			case sf::Event::Closed : 
+			if (windowEvent.type == sf::Event::Closed)
 				window->close();
-				break;
-			default:
-				break;
+			else if (windowEvent.type == sf::Event::KeyPressed)
+			{
+				if (windowEvent.key.code == sf::Keyboard::Space)
+					if (isReleased) 
+					{
+						player.flap();
+						isReleased = false;
+					}
+			}
+			else if (windowEvent.type == sf::Event::KeyReleased)
+			{
+				isReleased = true;
 			}
 		}
 
@@ -41,11 +50,16 @@ int main() {
 
 void update() 
 {
-
+	movePlayer();
 }
 
 void render()
 {
-	window->draw(player.getSprite());
+	window->draw(player);
 }
 
+void movePlayer()
+{
+	player.move(0, -player.getSpeed());
+	player.setSpeed(player.getSpeed() - 0.001f * player.getGravity());
+}
