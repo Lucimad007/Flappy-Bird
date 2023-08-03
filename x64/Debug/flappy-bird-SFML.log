@@ -1,0 +1,2 @@
+﻿  main.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(19,17): error C3867: 'sf::Window::close': non-standard syntax; use '&' to create a pointer to member
