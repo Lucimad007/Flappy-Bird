@@ -66,5 +66,6 @@ void render()
 void movePlayer()
 {
 	player.move(0, -player.getSpeed());
+	backgroundManager->setVerticalOffset(backgroundManager->getVerticalOffset() - player.getSpeed()/2);
 	player.setSpeed(player.getSpeed() - 0.001f * player.getGravity());
 }

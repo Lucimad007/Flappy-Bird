@@ -1,4 +1,5 @@
 #include "background-manager.h"
+#include <iostream>
 
 BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 {
@@ -35,14 +36,35 @@ void BackgroundManager::drawNight()
 
 void BackgroundManager::drawGround()
 {
-	offset -= 0.25f;
+	horizontalOffset -= 0.25f;
 	int size = groundTexture.getSize().x;
-	if (offset <= -size)		//ground moves backward so we think we are moving forward
-		offset = 0;
-	for (double i = offset - size; i < window->getSize().x; i += size)
+	if (horizontalOffset <= -size)		//ground moves backward so we think we are moving forward
+		horizontalOffset = 0;
+
+	//
+	for (double j = 0; j <= verticalOffset; j += groundTexture.getSize().y / 2)
 	{
-		groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - groundTexture.getSize().y));
+		for (double i = horizontalOffset - size; i < window->getSize().x; i += size)
+		{
+			groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - groundTexture.getSize().y - j));
+			window->draw(groundSprite);
+		}
+	}
+
+	//outer layer of ground
+	for (double i = horizontalOffset - size; i < window->getSize().x; i += size)
+	{
+		groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - groundTexture.getSize().y - verticalOffset));
 		window->draw(groundSprite);
 	}
-	groundSprite.setPosition(sf::Vector2f(0, window->getSize().y - groundTexture.getSize().y));
+
+	window->draw(groundSprite);
+
+	groundSprite.setPosition(sf::Vector2f(0, window->getSize().y - groundTexture.getSize().y - verticalOffset));
 }
+
+double BackgroundManager::getVerticalOffset() { return verticalOffset; }
+void BackgroundManager::setVerticalOffset(double offset) { this->verticalOffset = offset; }
+
+double BackgroundManager::getHorizontalOffset() { return horizontalOffset; }
+void BackgroundManager::setHorizontalOffset(double offset) { this->horizontalOffset = offset; }

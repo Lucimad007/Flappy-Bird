@@ -1,4 +1,7 @@
 #include "player.h"
+#include "background-manager.h"
+
+extern BackgroundManager* backgroundManager;
 
 Player::Player(int x, int y, int speed)
 {
@@ -21,6 +24,7 @@ void Player::flap()
 	else
 		speed += 0.25f;
 	move(0, speed);
+	backgroundManager->setVerticalOffset(backgroundManager->getVerticalOffset() + speed/2);
 }
 
 double Player::getSpeed()
