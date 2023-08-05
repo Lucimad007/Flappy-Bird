@@ -19,6 +19,7 @@ private:
 	const int height = 32;
 	double speed;		//vertical speed
 	const double gravity = 2;
+	const double flapSpeed = 0.25;
 	int mass = 1;
 	sf::Sprite sprite;
 	sf::Texture texture;

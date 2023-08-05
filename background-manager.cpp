@@ -1,5 +1,4 @@
 #include "background-manager.h"
-#include <iostream>
 
 BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 {
@@ -42,11 +41,11 @@ void BackgroundManager::drawGround()
 		horizontalOffset = 0;
 
 	//
-	for (double j = 0; j <= verticalOffset; j += groundTexture.getSize().y / 2)
+	for (double j = 0; j <= ground_y; j += groundTexture.getSize().y / 2)
 	{
 		for (double i = horizontalOffset - size; i < window->getSize().x; i += size)
 		{
-			groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - groundTexture.getSize().y - j));
+			groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - j));
 			window->draw(groundSprite);
 		}
 	}
@@ -54,17 +53,96 @@ void BackgroundManager::drawGround()
 	//outer layer of ground
 	for (double i = horizontalOffset - size; i < window->getSize().x; i += size)
 	{
-		groundSprite.setPosition(sf::Vector2f(i, window->getSize().y - groundTexture.getSize().y - verticalOffset));
+		groundSprite.setPosition(sf::Vector2f(i, window->getSize().y  - ground_y));
 		window->draw(groundSprite);
 	}
 
 	window->draw(groundSprite);
 
-	groundSprite.setPosition(sf::Vector2f(0, window->getSize().y - groundTexture.getSize().y - verticalOffset));
+	groundSprite.setPosition(sf::Vector2f(0, window->getSize().y - groundTexture.getSize().y - ground_y));
 }
 
-double BackgroundManager::getVerticalOffset() { return verticalOffset; }
-void BackgroundManager::setVerticalOffset(double offset) { this->verticalOffset = offset; }
+void BackgroundManager::generatePrimaryPipes()
+{	
+	Pipe pipeForSize(0, 0, UP);
+	for (int i = window->getSize().x / 2; i < window->getSize().x; i += pipeForSize.getSize().x * 3)
+	{
+		if((int)pipesHeightRelativeToGround % 20)
+			pipesHeightRelativeToGround += rand() % 6 * 10;
+		else 
+			pipesHeightRelativeToGround -= rand() % 6 * 10;
+
+		if (pipesHeightRelativeToGround < 0) 
+		{
+			pipesHeightRelativeToGround = 0;
+		}
+		else if (pipesHeightRelativeToGround > window->getSize().y)
+		{
+			pipesHeightRelativeToGround = window->getSize().y;
+		}
+		Pipe* pipe = new Pipe(0, 0, DOWN);
+		Pipe* pipe2 = new Pipe(0, 0, UP);
+		pipe->setPosition(i, window->getSize().y - ground_y - pipesHeightRelativeToGround);
+		pipe2->setPosition(i, window->getSize().y - ground_y - pipe->getSize().y - gapBetweenPipes - pipesHeightRelativeToGround);
+		pipes.push_back(*pipe);
+		pipes.push_back(*pipe2);
+	}
+}
+
+void BackgroundManager::movePipes(double offset)
+{
+	for (auto it = pipes.begin(); it != pipes.end(); ++it)
+	{
+		it->move(-0.25, offset);
+	}
+}
+
+void BackgroundManager::updatePipes()
+{ 
+	Pipe lastPipe(0, 0, UP);
+	int max_x = 0;
+
+	for (auto it = pipes.begin(); it != pipes.end(); ++it)
+	{
+		if (it->getPosition().x > max_x)
+			max_x = it->getPosition().x;
+		if (it->getPosition().x + it->getSize().x < 0)
+			it = pipes.erase(it);
+	}
+
+	lastPipe.setPosition(sf::Vector2f(max_x, 0));
+	//generating new pipes
+	if (!pipes.empty())
+	{
+		if (lastPipe.getPosition().x < window->getSize().x - lastPipe.getSize().x)
+		{			
+			if ((int)pipesHeightRelativeToGround % 20)
+				pipesHeightRelativeToGround += rand() % 6 * 10;
+			else
+				pipesHeightRelativeToGround -= rand() % 6 * 10;
+
+			if (pipesHeightRelativeToGround < 0)
+			{
+				pipesHeightRelativeToGround = 0;
+			}
+			else if (pipesHeightRelativeToGround > window->getSize().y/2)
+			{
+				pipesHeightRelativeToGround = window->getSize().y/2 - 30;
+			}
+			Pipe* pipe = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipesHeightRelativeToGround, DOWN);
+			Pipe* pipe2 = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipe->getSize().y - gapBetweenPipes - pipesHeightRelativeToGround, UP);
+			pipes.push_back(*pipe);
+			pipes.push_back(*pipe2);
+		}
+	}
+}
+
+void BackgroundManager::moveGround(double offset)
+{
+	ground_y += offset;
+}
+
+const std::list<Pipe>& BackgroundManager::getPipes() { return pipes; }
 
 double BackgroundManager::getHorizontalOffset() { return horizontalOffset; }
 void BackgroundManager::setHorizontalOffset(double offset) { this->horizontalOffset = offset; }

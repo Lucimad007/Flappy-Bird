@@ -16,13 +16,13 @@ void movePlayer();
 int main() {
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE);
 	backgroundManager = new BackgroundManager(window);
+	backgroundManager->generatePrimaryPipes();
 	sf::Event windowEvent;
 
 	bool isReleased = true;
 	while (window->isOpen())
 	{
 		window->clear();
-
 		while (window->pollEvent(windowEvent))
 		{
 			if (windowEvent.type == sf::Event::Closed)
@@ -53,6 +53,8 @@ int main() {
 
 void update() 
 {
+	backgroundManager->updatePipes();
+	backgroundManager->movePipes(player.getSpeed());
 	movePlayer();
 }
 
@@ -60,12 +62,16 @@ void render()
 {
 	backgroundManager->drawNight();
 	backgroundManager->drawGround();
+	for (auto it = backgroundManager->getPipes().begin(); it != backgroundManager->getPipes().end(); ++it)
+	{
+		window->draw(*it);
+	}
 	window->draw(player);
 }
 
 void movePlayer()
 {
 	player.move(0, -player.getSpeed());
-	backgroundManager->setVerticalOffset(backgroundManager->getVerticalOffset() - player.getSpeed()/2);
+	backgroundManager->moveGround(-player.getSpeed());
 	player.setSpeed(player.getSpeed() - 0.001f * player.getGravity());
 }

@@ -1,6 +1,6 @@
 ﻿  main.cpp
 D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(9,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(68,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(74,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   player.cpp
 D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(8,36): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
@@ -16,7 +16,7 @@ D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(9,23): warning C4244: '
 D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(9,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(26,10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  4 of 93 functions ( 4.3%) were compiled, the rest were copied from previous compilation.
+  15 of 166 functions ( 9.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

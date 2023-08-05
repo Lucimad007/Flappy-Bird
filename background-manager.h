@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <list>
+#include "pipe.h"
 
 class BackgroundManager : public sf::RectangleShape
 {
@@ -9,17 +11,25 @@ public:
 	void drawNight();
 	void drawGround();
 
-	double getVerticalOffset();
-	void setVerticalOffset(double offset);
-
 	double getHorizontalOffset();
 	void setHorizontalOffset(double offset);
+
+	void generatePrimaryPipes();
+	void movePipes(double offset);
+	void updatePipes();
+	void moveGround(double offset);
+
+	const std::list<Pipe>& getPipes();
 
 private:
 	sf::RenderWindow* window = nullptr;
 	sf::Sprite daySprite, nightSprite, groundSprite;
 	sf::Texture dayTexture, nightTexture, groundTexture;
 	double horizontalOffset = 0;
-	double verticalOffset = 0;
+	double ground_y = 50;
+	double gapBetweenPipes = 100;
+	double pipesHeightRelativeToGround = 50;
+	double pipesLastHeight = 0;
+	std::list<Pipe> pipes{};
 };
 

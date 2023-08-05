@@ -20,11 +20,11 @@ double Player::getGravity()
 void Player::flap()
 {
 	if (speed <= 0)
-		speed = 0.75f;
+		speed = flapSpeed;
 	else
-		speed += 0.25f;
+		speed += flapSpeed;
 	move(0, speed);
-	backgroundManager->setVerticalOffset(backgroundManager->getVerticalOffset() + speed/2);
+	backgroundManager->moveGround(-speed);
 }
 
 double Player::getSpeed()
