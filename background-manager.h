@@ -18,6 +18,7 @@ public:
 	void movePipes(double offset);
 	void updatePipes();
 	void moveGround(double offset);
+	bool intersectsGround(double height, double length);
 
 	const std::list<Pipe>& getPipes();
 
@@ -26,7 +27,7 @@ private:
 	sf::Sprite daySprite, nightSprite, groundSprite;
 	sf::Texture dayTexture, nightTexture, groundTexture;
 	double horizontalOffset = 0;
-	double ground_y = 50;
+	double ground_y = 50;		//y relative to bottom
 	double gapBetweenPipes = 100;
 	double pipesHeightRelativeToGround = 50;
 	double pipesLastHeight = 0;

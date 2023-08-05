@@ -1,7 +1,9 @@
 #include <SFML\Graphics.hpp>
 #include "player.h"
 #include "background-manager.h"
+#include <iostream>
 
+bool RUNNING = true;
 const int WIDTH = 800;
 const int HEIGHT = 500;
 const std::string TITLE = "Flappy Bird";
@@ -12,6 +14,7 @@ BackgroundManager* backgroundManager;
 void update();
 void render();
 void movePlayer();
+void detectCollisions();
 
 int main() {
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE);
@@ -20,7 +23,7 @@ int main() {
 	sf::Event windowEvent;
 
 	bool isReleased = true;
-	while (window->isOpen())
+	while (RUNNING)
 	{
 		window->clear();
 		while (window->pollEvent(windowEvent))
@@ -55,6 +58,7 @@ void update()
 {
 	backgroundManager->updatePipes();
 	backgroundManager->movePipes(player.getSpeed());
+	detectCollisions();
 	movePlayer();
 }
 
@@ -74,4 +78,23 @@ void movePlayer()
 	player.move(0, -player.getSpeed());
 	backgroundManager->moveGround(-player.getSpeed());
 	player.setSpeed(player.getSpeed() - 0.001f * player.getGravity());
+}
+
+void detectCollisions()
+{
+	//ground
+	if (backgroundManager->intersectsGround(player.getPosition().y, player.getSize().y))
+	{
+		RUNNING = false;
+		return;
+	}
+	//pipes
+	for (auto it = backgroundManager->getPipes().begin(); it != backgroundManager->getPipes().end(); it++)
+	{
+		if (it->intersects(player))
+		{
+			RUNNING = false;
+			return;
+		}
+	}
 }

@@ -137,6 +137,11 @@ void BackgroundManager::updatePipes()
 	}
 }
 
+bool BackgroundManager::intersectsGround(double height, double length)
+{
+	return height + length > window->getSize().y - ground_y;
+}
+
 void BackgroundManager::moveGround(double offset)
 {
 	ground_y += offset;
