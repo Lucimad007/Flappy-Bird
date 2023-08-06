@@ -78,9 +78,69 @@ D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(198,52): wa
           [
               T=float
           ]
+  main.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(12,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(12,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(15,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(35,98): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(35,68): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(126,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  pipe.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\pipe.cpp(6,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\pipe.cpp(6,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\pipe.cpp(15,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\pipe.cpp(15,50): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  player.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(8,36): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(8,29): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(9,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(9,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(34,10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(104,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\player.cpp(104,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  1 of 218 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+  5 of 219 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   flappy-bird-SFML.vcxproj -> D:\Projects\flappy-bird-SFML\flappy-bird-SFML\Release\flappy-bird-SFML.exe

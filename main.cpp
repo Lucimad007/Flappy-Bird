@@ -96,6 +96,7 @@ void update()
 	detectCollisions();
 	movePlayer();
 	backgroundManager->updateScore();
+	player.updateState();
 }
 
 void render()

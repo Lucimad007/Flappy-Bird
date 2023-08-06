@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 
 enum BirdColor {RED_BIRD, YELLOW_BIRD, BLUE_BIRD};
+enum BirdState {UP_WING, MID_WING, DOWN_WING};
 
 class Player : public sf::RectangleShape
 {
@@ -16,6 +17,7 @@ public:
 	void setBlueColor();
 	void setRedColor();
 	void updateColor(int score);
+	void updateState();
 	void reset();
 
 
@@ -26,8 +28,9 @@ private:
 	double speed;		//vertical speed
 	const double gravity = 2;
 	const double flapSpeed = 0.25;
-	sf::Texture yellowTexture, redTexture, blueTexture;
+	sf::Texture yellowTextureUp, redTextureUp, blueTextureUp, yellowTextureDown, redTextureDown, blueTextureDown, yellowTextureMid, redTextureMid, blueTextureMid;
 	BirdColor birdColor = YELLOW_BIRD;
+	BirdState birdState = UP_WING;
 public:
 	static double X_INIT, Y_INIT;
 	static int SPEED_INIT;
