@@ -9,11 +9,12 @@ const int WIDTH = 800;
 const int HEIGHT = 500;
 const std::string TITLE = "Flappy Bird";
 sf::RenderWindow* window;
-const int X_INIT = WIDTH / 3, Y_INIT = HEIGHT / 2;
-const double SPEED_INIT = 0.05f;
-Player player(X_INIT, Y_INIT, SPEED_INIT);
+Player player(Player::X_INIT, Player::Y_INIT, Player::SPEED_INIT);
 BackgroundManager* backgroundManager;
 Button* restartButton;
+int Player::SPEED_INIT = 0.05f;
+double Player::Y_INIT = HEIGHT / 2;
+double Player::X_INIT = WIDTH / 3;
 
 void loadIcon();
 void update();
@@ -100,10 +101,11 @@ void update()
 void render()
 {
 	//background
-	if(backgroundManager->getScore()/10 % 2)
+	if(backgroundManager->isDay())
 		backgroundManager->drawDay();
 	else 
 		backgroundManager->drawNight();
+	player.updateColor(backgroundManager->getScore());
 
 	//pipes
 	for (auto it = backgroundManager->getPipes().begin(); it != backgroundManager->getPipes().end(); ++it)
@@ -152,7 +154,6 @@ void checkButtonEvents()
 void on_restart_button()
 {
 	backgroundManager = new BackgroundManager(window);
-	player.setPosition(X_INIT, Y_INIT);
-	player.setSpeed(SPEED_INIT);
+	player.reset();
 	RUNNING = true;
 }

@@ -29,11 +29,44 @@ void Player::flap()
 	backgroundManager->moveGround(-speed);
 }
 
-void Player::setYellowColor() { this->setTexture(&yellowTexture); }
+void Player::setYellowColor()
+{
+	this->setTexture(&yellowTexture);
+	this->birdColor = YELLOW_BIRD;
+}
 
-void Player::setBlueColor() { this->setTexture(&blueTexture); }
+void Player::setBlueColor() 
+{ 
+	this->setTexture(&blueTexture); 
+	this->birdColor = BLUE_BIRD;
+}
 
-void Player::setRedColor() { this->setTexture(&redTexture); }
+void Player::setRedColor() 
+{ 
+	this->setTexture(&redTexture); 
+	this->birdColor = RED_BIRD;
+}
+
+void Player::updateColor(int score)
+{
+	if (birdColor == RED_BIRD)
+	{
+		return;
+	}
+	else if (birdColor != RED_BIRD && score >= SPECIAL_SCORE)
+	{
+		setRedColor();
+		return;
+	}
+
+	if (backgroundManager->isDay())
+	{
+		setYellowColor();
+	}
+	else {
+		setBlueColor();
+	}
+}
 
 double Player::getSpeed()
 {
@@ -43,4 +76,11 @@ double Player::getSpeed()
 void Player::setSpeed(double speed)
 {
 	this->speed = speed;
+}
+
+void Player::reset()
+{
+	this->setPosition(X_INIT, Y_INIT);
+	speed = SPEED_INIT;
+	setYellowColor();
 }

@@ -181,7 +181,7 @@ void BackgroundManager::updatePipes()
 	{
 		if (lastPipe.getPosition().x < window->getSize().x - lastPipe.getSize().x)
 		{			
-			if ((int)pipesHeightRelativeToGround % 20)
+			if (!((int)pipesHeightRelativeToGround % 20))
 				pipesHeightRelativeToGround += rand() % 6 * 10;
 			else
 				pipesHeightRelativeToGround -= rand() % 6 * 10;
@@ -218,3 +218,8 @@ const std::list<Pipe>& BackgroundManager::getPipes() { return pipes; }
 
 double BackgroundManager::getHorizontalOffset() { return horizontalOffset; }
 void BackgroundManager::setHorizontalOffset(double offset) { this->horizontalOffset = offset; }
+
+bool BackgroundManager::isDay()
+{
+	return score / 10 % 2 == 0;
+}

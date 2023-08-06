@@ -23,6 +23,7 @@ public:
 	void resetPositionOfNumbers();
 	void updateScore();
 	int getScore();
+	bool isDay();
 
 	const std::list<Pipe>& getPipes();
 
