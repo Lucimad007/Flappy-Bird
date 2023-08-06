@@ -8,8 +8,10 @@ Player::Player(int x, int y, int speed)
 	this->setSize(sf::Vector2f(width, height));
 	this->setPosition(x, y);
 	this->speed = speed;
-	this->texture.loadFromFile("assets\\sprites\\yellowbird-upflap.png");
-	this->setTexture(&texture);
+	this->redTexture.loadFromFile("assets\\sprites\\redbird-upflap.png");
+	this->blueTexture.loadFromFile("assets\\sprites\\bluebird-upflap.png");
+	this->yellowTexture.loadFromFile("assets\\sprites\\yellowbird-upflap.png");
+	this->setTexture(&yellowTexture);
 }
 
 double Player::getGravity() 
@@ -27,6 +29,12 @@ void Player::flap()
 	backgroundManager->moveGround(-speed);
 }
 
+void Player::setYellowColor() { this->setTexture(&yellowTexture); }
+
+void Player::setBlueColor() { this->setTexture(&blueTexture); }
+
+void Player::setRedColor() { this->setTexture(&redTexture); }
+
 double Player::getSpeed()
 {
 	return speed;
@@ -35,8 +43,4 @@ double Player::getSpeed()
 void Player::setSpeed(double speed)
 {
 	this->speed = speed;
-}
-
-sf::Sprite Player::getSprite() {
-	return sprite;
 }

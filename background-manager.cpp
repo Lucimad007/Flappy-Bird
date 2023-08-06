@@ -20,6 +20,7 @@ BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 		numberTexture[i].loadFromFile(path);
 		numberSprite[i].setTexture(numberTexture[i]);
 	}
+	generatePrimaryPipes();
 }
 
 void BackgroundManager::drawDay()
@@ -210,6 +211,8 @@ void BackgroundManager::moveGround(double offset)
 {
 	ground_y += offset;
 }
+
+int BackgroundManager::getScore() { return score; }
 
 const std::list<Pipe>& BackgroundManager::getPipes() { return pipes; }
 

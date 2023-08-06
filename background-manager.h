@@ -22,6 +22,7 @@ public:
 	bool intersectsGround(double height, double length);
 	void resetPositionOfNumbers();
 	void updateScore();
+	int getScore();
 
 	const std::list<Pipe>& getPipes();
 

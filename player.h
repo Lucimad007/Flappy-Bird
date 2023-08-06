@@ -8,11 +8,12 @@ public:
 
 	double getSpeed();
 	void setSpeed(double speed);
-
-	sf::Sprite getSprite();
 	double getGravity();
-
 	void flap();
+	void setYellowColor();
+	void setBlueColor();
+	void setRedColor();
+
 
 private:
 	const int width = 32;
@@ -20,8 +21,6 @@ private:
 	double speed;		//vertical speed
 	const double gravity = 2;
 	const double flapSpeed = 0.25;
-	int mass = 1;
-	sf::Sprite sprite;
-	sf::Texture texture;
+	sf::Texture yellowTexture, redTexture, blueTexture;
 };
 
