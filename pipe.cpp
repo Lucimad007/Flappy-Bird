@@ -49,3 +49,7 @@ bool Pipe::intersects(const Player& player) const
 }
 
 PipeDirection Pipe::getPipeDirection() { return pipeDirection; }
+
+void Pipe::setIsPassed(bool isPassed) { this->isPassed = isPassed; }
+
+bool Pipe::getIsPassed() { return isPassed; }

@@ -1,9 +1,86 @@
-﻿  main.cpp
-D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(11,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(78,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  background-manager.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(30,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(39,20): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(41,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(59,65): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(59,42): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(67,65): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(67,41): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(73,91): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(95,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(100,87): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(101,46): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(110,79): warning C4244: 'argument': conversion from 'const double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(110,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(132,42): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(132,94): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(149,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(149,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(150,94): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(150,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(160,19): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(172,29): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(177,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(196,110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(196,51): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(197,149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\background-manager.cpp(197,52): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  4 of 173 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  2 of 200 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   flappy-bird-SFML.vcxproj -> D:\Projects\flappy-bird-SFML\flappy-bird-SFML\Release\flappy-bird-SFML.exe

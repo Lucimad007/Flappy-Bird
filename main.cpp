@@ -60,6 +60,7 @@ void update()
 	backgroundManager->movePipes(player.getSpeed());
 	detectCollisions();
 	movePlayer();
+	backgroundManager->updateScore();
 }
 
 void render()
@@ -70,6 +71,7 @@ void render()
 	{
 		window->draw(*it);
 	}
+	backgroundManager->drawScore();
 	window->draw(player);
 }
 

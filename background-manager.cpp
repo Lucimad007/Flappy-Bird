@@ -1,4 +1,7 @@
 #include "background-manager.h"
+#include <string>
+
+extern Player player;
 
 BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 {
@@ -9,6 +12,14 @@ BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 	daySprite.setTexture(dayTexture);
 	nightSprite.setTexture(nightTexture);
 	groundSprite.setTexture(groundTexture);
+	for (int i = 0; i < 10; i++)
+	{
+		std::string path = "assets\\sprites\\";
+		path += std::to_string(i);
+		path += ".png";
+		numberTexture[i].loadFromFile(path);
+		numberSprite[i].setTexture(numberTexture[i]);
+	}
 }
 
 void BackgroundManager::drawDay()
@@ -60,6 +71,59 @@ void BackgroundManager::drawGround()
 	window->draw(groundSprite);
 
 	groundSprite.setPosition(sf::Vector2f(0, window->getSize().y - groundTexture.getSize().y - ground_y));
+}
+
+void BackgroundManager::drawScore()
+{
+	resetPositionOfNumbers();
+	if (score == 0)
+	{
+		window->draw(numberSprite[0]);
+		return;
+	}
+
+	int figures = 0;
+	int tempScore = score;
+	while (tempScore)
+	{
+		figures++;
+		tempScore /= 10;
+	}
+	
+	tempScore = score;
+	int figure = 0;
+	int last_X = window->getSize().x - scoreGapRelativeToWindow;
+	for (int i = 0; i < figures; i++)
+	{
+		figure = tempScore % 10;
+		tempScore /= 10;
+		numberSprite[figure].setPosition(last_X - (float)numberTexture[figure].getSize().x, scoreGapRelativeToWindow);
+		last_X = numberSprite[figure].getPosition().x;
+		window->draw(numberSprite[figure]);
+	}
+}
+
+void BackgroundManager::resetPositionOfNumbers()
+{
+	for (int i = 0; i < 10; i++)	//0 - 9
+	{
+		numberSprite[i].setPosition(window->getSize().x - scoreGapRelativeToWindow, scoreGapRelativeToWindow);		//out of bound enugh!
+	}
+}
+
+void BackgroundManager::updateScore()
+{
+	for (auto it = pipes.begin(); it != pipes.end(); ++it)
+	{
+		if ((!it->getIsPassed()) && (it->getPipeDirection() == DOWN))		//if we count UP pipes it will be twice (wrong)
+		{
+			if (player.getPosition().x > (it->getPosition().x + it->getSize().x))
+			{
+				it->setIsPassed(true);
+				score++;
+			}
+		}
+	}
 }
 
 void BackgroundManager::generatePrimaryPipes()

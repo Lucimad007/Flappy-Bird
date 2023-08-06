@@ -11,8 +11,11 @@ public:
 	Pipe(const Pipe&);		//do not forget to implement that because we are inheritancing another class and we might encounter problems when our code need copy constructor , like std::list<Pipe> scenario
 	PipeDirection getPipeDirection();
 	bool intersects(const Player& player) const;
+	void setIsPassed(bool isPassed);
+	bool getIsPassed();
 private :
 	sf::Texture pipeTexture;
 	PipeDirection pipeDirection = DOWN;
+	bool isPassed = false;
 };
 
