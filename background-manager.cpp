@@ -129,7 +129,8 @@ void BackgroundManager::updateScore()
 
 void BackgroundManager::generatePrimaryPipes()
 {	
-	Pipe pipeForSize(0, 0, UP);
+	PipeColor color = isDay() ? GREEN_PIPE : RED_PIPE;
+	Pipe pipeForSize(0, 0, UP, color);
 	for (int i = window->getSize().x / 2; i < window->getSize().x; i += pipeForSize.getSize().x * 3)
 	{
 		if((int)pipesHeightRelativeToGround % 20)
@@ -145,8 +146,8 @@ void BackgroundManager::generatePrimaryPipes()
 		{
 			pipesHeightRelativeToGround = window->getSize().y;
 		}
-		Pipe* pipe = new Pipe(0, 0, DOWN);
-		Pipe* pipe2 = new Pipe(0, 0, UP);
+		Pipe* pipe = new Pipe(0, 0, DOWN, color);
+		Pipe* pipe2 = new Pipe(0, 0, UP, color);
 		pipe->setPosition(i, window->getSize().y - ground_y - pipesHeightRelativeToGround);
 		pipe2->setPosition(i, window->getSize().y - ground_y - pipe->getSize().y - gapBetweenPipes - pipesHeightRelativeToGround);
 		pipes.push_back(*pipe);
@@ -164,7 +165,7 @@ void BackgroundManager::movePipes(double offset)
 
 void BackgroundManager::updatePipes()
 { 
-	Pipe lastPipe(0, 0, UP);
+	Pipe lastPipe(0, 0, UP, GREEN_PIPE);
 	int max_x = 0;
 
 	for (auto it = pipes.begin(); it != pipes.end(); ++it)
@@ -194,8 +195,9 @@ void BackgroundManager::updatePipes()
 			{
 				pipesHeightRelativeToGround = window->getSize().y/2 - 30;
 			}
-			Pipe* pipe = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipesHeightRelativeToGround, DOWN);
-			Pipe* pipe2 = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipe->getSize().y - gapBetweenPipes - pipesHeightRelativeToGround, UP);
+			PipeColor color = isDay() ? GREEN_PIPE : RED_PIPE;
+			Pipe* pipe = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipesHeightRelativeToGround, DOWN, color);
+			Pipe* pipe2 = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipe->getSize().y - gapBetweenPipes - pipesHeightRelativeToGround, UP, color);
 			pipes.push_back(*pipe);
 			pipes.push_back(*pipe2);
 		}

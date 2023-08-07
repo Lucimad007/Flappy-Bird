@@ -1,16 +1,30 @@
 #include "pipe.h"
 
-Pipe::Pipe(int x, int y,PipeDirection direction)
+Pipe::Pipe(int x, int y,PipeDirection direction, PipeColor pipeColor)
 {
 	pipeDirection = direction;
 	this->setPosition(x, y);
-	if (direction == UP)
+	if (pipeColor == GREEN_PIPE)
 	{
-		pipeTexture.loadFromFile("assets\\sprites\\pipe-green-up.png");
+		if (direction == UP)
+		{
+			pipeTexture.loadFromFile("assets\\sprites\\pipe-green-up.png");
+		}
+		else if (direction == DOWN)
+		{
+			pipeTexture.loadFromFile("assets\\sprites\\pipe-green-down.png");
+		}
 	}
-	else if (direction == DOWN)
+	else if (pipeColor == RED_PIPE)
 	{
-		pipeTexture.loadFromFile("assets\\sprites\\pipe-green-down.png");
+		if (direction == UP)
+		{
+			pipeTexture.loadFromFile("assets\\sprites\\pipe-red-up.png");
+		}
+		else if (direction == DOWN)
+		{
+			pipeTexture.loadFromFile("assets\\sprites\\pipe-red-down.png");
+		}
 	}
 	this->setSize(sf::Vector2f(pipeTexture.getSize().x, pipeTexture.getSize().y));
 	this->setTexture(&pipeTexture);
