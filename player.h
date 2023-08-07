@@ -26,8 +26,8 @@ private:
 	const int height = 32;
 	const int SPECIAL_SCORE = 1000;		//the bird will stay red
 	double speed;		//vertical speed
-	const double gravity = 2;
-	const double flapSpeed = 0.25;
+	const double gravity = 200;
+	const double flapSpeed = 2.5;
 	sf::Texture yellowTextureUp, redTextureUp, blueTextureUp, yellowTextureDown, redTextureDown, blueTextureDown, yellowTextureMid, redTextureMid, blueTextureMid;
 	BirdColor birdColor = YELLOW_BIRD;
 	BirdState birdState = UP_WING;

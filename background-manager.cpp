@@ -49,7 +49,6 @@ void BackgroundManager::drawNight()
 
 void BackgroundManager::drawGround()
 {
-	horizontalOffset -= 0.25f;
 	int size = groundTexture.getSize().x;
 	if (horizontalOffset <= -size)		//ground moves backward so we think we are moving forward
 		horizontalOffset = 0;
@@ -161,7 +160,7 @@ void BackgroundManager::movePipes(double offset)
 {
 	for (auto it = pipes.begin(); it != pipes.end(); ++it)
 	{
-		it->move(-0.25, offset);
+		it->move(-pipeSpeed, offset);
 	}
 }
 
@@ -211,9 +210,10 @@ bool BackgroundManager::intersectsGround(double height, double length)
 	return height + length > window->getSize().y - ground_y;
 }
 
-void BackgroundManager::moveGround(double offset)
+void BackgroundManager::moveGround(double vertical_offset)
 {
-	ground_y += offset;
+	horizontalOffset -= groundSpeed;
+	ground_y += vertical_offset;
 }
 
 int BackgroundManager::getScore() { return score; }

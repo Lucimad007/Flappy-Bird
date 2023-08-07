@@ -4,20 +4,25 @@
 #include "button.h"
 #include "audio-manager.h"
 #include <iostream>
+#include <string>
 
 AudioManager audioManager;
 bool RUNNING = true;
 const int WIDTH = 800;
 const int HEIGHT = 500;
-const int FPS_CAP = 60;
+const int FPS_CAP = 60;		//frames per second
+const int UPS_CAP = 60;		//updates per second
+const double UPDATE_TIME = 1.0 / 60.0;
+int Player::SPEED_INIT = 0.5f;
+double Player::Y_INIT = HEIGHT / 2;
+double Player::X_INIT = WIDTH / 3;
 const std::string TITLE = "Flappy Bird";
 sf::RenderWindow* window;
 Player player(Player::X_INIT, Player::Y_INIT, Player::SPEED_INIT);
 BackgroundManager* backgroundManager;
 Button* restartButton;
-int Player::SPEED_INIT = 0.05f;
-double Player::Y_INIT = HEIGHT / 2;
-double Player::X_INIT = WIDTH / 3;
+double delta_time = 0;
+sf::Clock game_clock;
 
 void loadIcon();
 void update();
@@ -28,7 +33,10 @@ void checkButtonEvents();
 void on_restart_button();
 
 int main() {
+	srand(NULL);	//NULL is defined as 0
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Titlebar | sf::Style::Close);
+	window->setVerticalSyncEnabled(true);
+	//window->setFramerateLimit(FPS_CAP);
 	loadIcon();
 	backgroundManager = new BackgroundManager(window);
 	sf::Event windowEvent;
@@ -41,6 +49,11 @@ int main() {
 	restartButton->setButtonHandler(on_restart_button);
 
 	bool isReleased = true;
+
+	game_clock.restart();
+	double ups_time = 0;
+	double fps_time = 0;
+	int fps_counter = 0;
 	while (window->isOpen())
 	{
 		while (window->pollEvent(windowEvent))
@@ -70,7 +83,21 @@ int main() {
 		}
 
 		window->clear();
-		update();	//logic
+		delta_time = game_clock.restart().asSeconds();
+		ups_time += delta_time;
+		fps_time += delta_time;
+		if (ups_time > UPDATE_TIME)
+		{
+			ups_time -= UPDATE_TIME;
+			update();	//logic
+		}
+		if (fps_time >= 1) {
+			window->setTitle(TITLE + " | fPS : " + std::to_string(fps_counter));
+			fps_time -= 1;
+			fps_counter = 0;
+		}
+
+		fps_counter++;
 		render();	//visual
 
 		window->display();
@@ -162,5 +189,6 @@ void on_restart_button()
 {
 	backgroundManager = new BackgroundManager(window);
 	player.reset();
+	game_clock.restart();
 	RUNNING = true;
 }

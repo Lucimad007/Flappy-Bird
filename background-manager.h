@@ -20,7 +20,7 @@ public:
 	void generatePrimaryPipes();
 	void movePipes(double offset);
 	void updatePipes();
-	void moveGround(double offset);
+	void moveGround(double vertical_offset);		//horizontal is automatic
 	bool intersectsGround(double height, double length);
 	void resetPositionOfNumbers();
 	void updateScore();
@@ -45,5 +45,7 @@ private:
 	int score = 0;
 	const double scoreGapRelativeToWindow = 30; 
 	DayState dayState = DAY;
+	const double pipeSpeed = 2.5;
+	const double groundSpeed = pipeSpeed;
 };
 
