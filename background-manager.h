@@ -3,6 +3,8 @@
 #include <list>
 #include "pipe.h"
 
+enum DayState {DAY, NIGHT};
+
 class BackgroundManager : public sf::RectangleShape
 {
 public:
@@ -24,6 +26,7 @@ public:
 	void updateScore();
 	int getScore();
 	bool isDay();
+	void updateDayState();
 
 	const std::list<Pipe>& getPipes();
 
@@ -40,6 +43,7 @@ private:
 	double pipesLastHeight = 0;
 	std::list<Pipe> pipes;
 	int score = 0;
-	const double scoreGapRelativeToWindow = 30;
+	const double scoreGapRelativeToWindow = 30; 
+	DayState dayState = DAY;
 };
 

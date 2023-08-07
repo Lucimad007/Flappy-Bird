@@ -1,7 +1,9 @@
 #include "player.h"
 #include "background-manager.h"
+#include "audio-manager.h"
 
 extern BackgroundManager* backgroundManager;
+extern AudioManager audioManager;
 
 Player::Player(int x, int y, int speed)
 {
@@ -27,6 +29,7 @@ double Player::getGravity()
 
 void Player::flap()
 {
+	audioManager.playSwoosh();
 	if (speed <= 0)
 		speed = flapSpeed;
 	else

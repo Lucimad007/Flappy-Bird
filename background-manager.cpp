@@ -1,7 +1,9 @@
 #include "background-manager.h"
+#include "audio-manager.h"
 #include <string>
 
 extern Player player;
+extern AudioManager audioManager;
 
 BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 {
@@ -224,4 +226,18 @@ void BackgroundManager::setHorizontalOffset(double offset) { this->horizontalOff
 bool BackgroundManager::isDay()
 {
 	return score / 10 % 2 == 0;
+}
+
+void BackgroundManager::updateDayState()
+{
+	if (isDay() && dayState != DAY)
+	{
+		dayState = DAY;
+		audioManager.playPoint();
+	}
+	else if (!isDay() && dayState != NIGHT)
+	{
+		dayState = NIGHT;
+		audioManager.playPoint();
+	}
 }

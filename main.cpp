@@ -2,8 +2,10 @@
 #include "player.h"
 #include "background-manager.h"
 #include "button.h"
+#include "audio-manager.h"
 #include <iostream>
 
+AudioManager audioManager;
 bool RUNNING = true;
 const int WIDTH = 800;
 const int HEIGHT = 500;
@@ -97,6 +99,7 @@ void update()
 	movePlayer();
 	backgroundManager->updateScore();
 	player.updateState();
+	backgroundManager->updateDayState();
 }
 
 void render()
@@ -133,6 +136,7 @@ void detectCollisions()
 	//ground
 	if (backgroundManager->intersectsGround(player.getPosition().y, player.getSize().y))
 	{
+		audioManager.playDie();
 		RUNNING = false;
 		return;
 	}
@@ -141,6 +145,7 @@ void detectCollisions()
 	{
 		if (it->intersects(player))
 		{
+			audioManager.playHit();
 			RUNNING = false;
 			return;
 		}
