@@ -9,6 +9,7 @@ AudioManager audioManager;
 bool RUNNING = true;
 const int WIDTH = 800;
 const int HEIGHT = 500;
+const int FPS_CAP = 60;
 const std::string TITLE = "Flappy Bird";
 sf::RenderWindow* window;
 Player player(Player::X_INIT, Player::Y_INIT, Player::SPEED_INIT);
@@ -27,7 +28,7 @@ void checkButtonEvents();
 void on_restart_button();
 
 int main() {
-	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE);
+	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Titlebar | sf::Style::Close);
 	loadIcon();
 	backgroundManager = new BackgroundManager(window);
 	sf::Event windowEvent;

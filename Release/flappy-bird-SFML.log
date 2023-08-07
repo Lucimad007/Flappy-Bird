@@ -1,6 +1,28 @@
-﻿  audio-manager.cpp
+﻿  main.cpp
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(15,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(15,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(18,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(39,98): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(39,68): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Projects\flappy-bird-SFML\flappy-bird-SFML\main.cpp(131,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  9 of 228 functions ( 3.9%) were compiled, the rest were copied from previous compilation.
+  1 of 228 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
