@@ -20,6 +20,7 @@ Player::Player(int x, int y, int speed)
 	this->blueTextureMid.loadFromFile("assets\\sprites\\bluebird-midflap.png");
 	this->yellowTextureMid.loadFromFile("assets\\sprites\\yellowbird-midflap.png");
 	this->setTexture(&yellowTextureUp);
+	this->setSize(sf::Vector2f(yellowTextureUp.getSize().x, yellowTextureUp.getSize().y));    //all bird textures have the same size
 }
 
 double Player::getGravity() 
