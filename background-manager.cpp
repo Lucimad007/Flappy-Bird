@@ -49,6 +49,7 @@ void BackgroundManager::drawNight()
 
 void BackgroundManager::drawGround()
 {
+	horizontalOffset -= groundSpeed;
 	int size = groundTexture.getSize().x;
 	if (horizontalOffset <= -size)		//ground moves backward so we think we are moving forward
 		horizontalOffset = 0;
@@ -194,7 +195,7 @@ void BackgroundManager::updatePipes()
 			}
 			else if (pipesHeightRelativeToGround > window->getSize().y/2)
 			{
-				pipesHeightRelativeToGround = window->getSize().y/2 - 30;
+				pipesHeightRelativeToGround = window->getSize().y/2;
 			}
 			PipeColor color = isDay() ? GREEN_PIPE : RED_PIPE;
 			Pipe* pipe = new Pipe(lastPipe.getPosition().x + 3 * lastPipe.getSize().x, window->getSize().y - ground_y - pipesHeightRelativeToGround, DOWN, color);
@@ -212,8 +213,7 @@ bool BackgroundManager::intersectsGround(double height, double length)
 
 void BackgroundManager::moveGround(double vertical_offset)
 {
-	horizontalOffset -= groundSpeed;
-	ground_y += vertical_offset;
+	ground_y -= vertical_offset;
 }
 
 int BackgroundManager::getScore() { return score; }

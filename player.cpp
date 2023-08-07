@@ -34,8 +34,6 @@ void Player::flap()
 		speed = flapSpeed;
 	else
 		speed += flapSpeed;
-	move(0, speed);
-	backgroundManager->moveGround(-speed);
 }
 
 void Player::setYellowColor()

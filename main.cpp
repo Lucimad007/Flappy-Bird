@@ -124,12 +124,13 @@ void loadIcon()
 
 void update() 
 {
-	backgroundManager->updatePipes();
-	backgroundManager->movePipes(player.getSpeed());
 	detectCollisions();
+	backgroundManager->movePipes(player.getSpeed());
+	backgroundManager->moveGround(player.getSpeed());
 	movePlayer();
-	backgroundManager->updateScore();
+	backgroundManager->updatePipes();
 	player.updateState();
+	backgroundManager->updateScore();
 	backgroundManager->updateDayState();
 }
 
@@ -158,8 +159,7 @@ void render()
 void movePlayer()
 {
 	player.move(0, -player.getSpeed());
-	backgroundManager->moveGround(-player.getSpeed());
-	player.setSpeed(player.getSpeed() - 0.001f * player.getGravity());
+	player.setSpeed(player.getSpeed() - 0.5 * player.getGravity());
 }
 
 void detectCollisions()
