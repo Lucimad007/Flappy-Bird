@@ -28,7 +28,7 @@ public:
 	bool isDay();
 	void updateDayState();
 
-	const std::list<Pipe>& getPipes();
+	std::list<Pipe>& getPipes();
 
 private:
 	sf::RenderWindow* window = nullptr;

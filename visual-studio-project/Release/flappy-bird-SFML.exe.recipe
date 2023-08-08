@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projects\flappy-bird-SFML\flappy-bird-SFML\Release\flappy-bird-SFML.exe</FullPath>
+      <FullPath>D:\Projects\flappy-bird-SFML\flappy-bird-SFML\visual-studio-project\Release\flappy-bird-SFML.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -2,6 +2,7 @@
 
 Pipe::Pipe(int x, int y,PipeDirection direction, PipeColor pipeColor)
 {
+	this->pipeColor = pipeColor;
 	pipeDirection = direction;
 	this->setPosition(x, y);
 	if (pipeColor == GREEN_PIPE)
@@ -35,6 +36,8 @@ Pipe::Pipe(const Pipe& input) :
 {
 	this->pipeTexture = input.pipeTexture;
 	this->pipeDirection = input.pipeDirection;
+	this->pipeColor = input.pipeColor;
+	this->isPassed = input.isPassed;
 }
 
 bool Pipe::intersects(const Player& player) const
@@ -67,3 +70,15 @@ PipeDirection Pipe::getPipeDirection() { return pipeDirection; }
 void Pipe::setIsPassed(bool isPassed) { this->isPassed = isPassed; }
 
 bool Pipe::getIsPassed() { return isPassed; }
+
+PipeColor Pipe::getPipeColor() { return pipeColor; }
+
+sf::RectangleShape Pipe::getGreenShaft()
+{
+	return greenShaft;
+}
+
+sf::RectangleShape Pipe::getRedShaft()
+{
+	return redShaft;
+}

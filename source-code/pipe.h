@@ -14,9 +14,16 @@ public:
 	bool intersects(const Player& player) const;
 	void setIsPassed(bool isPassed);
 	bool getIsPassed();
+	PipeColor getPipeColor();
+	static sf::RectangleShape getGreenShaft();
+	static sf::RectangleShape getRedShaft();
 private :
 	sf::Texture pipeTexture;
 	PipeDirection pipeDirection = DOWN;
 	bool isPassed = false;
+	PipeColor pipeColor;
+public:
+	static sf::Texture redShaftTexture, greenShaftTexture;
+	static sf::RectangleShape redShaft, greenShaft;
 };
 

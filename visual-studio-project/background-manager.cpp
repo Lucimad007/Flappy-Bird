@@ -218,7 +218,7 @@ void BackgroundManager::moveGround(double vertical_offset)
 
 int BackgroundManager::getScore() { return score; }
 
-const std::list<Pipe>& BackgroundManager::getPipes() { return pipes; }
+std::list<Pipe>& BackgroundManager::getPipes() { return pipes; }
 
 double BackgroundManager::getHorizontalOffset() { return horizontalOffset; }
 void BackgroundManager::setHorizontalOffset(double offset) { this->horizontalOffset = offset; }

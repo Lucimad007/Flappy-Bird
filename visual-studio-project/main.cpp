@@ -23,6 +23,12 @@ Button* restartButton;
 double delta_time = 0;
 sf::Clock game_clock;	
 
+sf::Texture Pipe::redShaftTexture;
+sf::Texture Pipe::greenShaftTexture;
+sf::RectangleShape Pipe::greenShaft;
+sf::RectangleShape Pipe::redShaft;
+
+void initializePipeStaticVars();
 void loadIcon();
 void update();
 void render();
@@ -34,6 +40,7 @@ void getReady();
 void freezeWindow(double seconds);	//the window can be still responsive
 
 int main() {
+	initializePipeStaticVars();
 	srand(NULL);	//NULL is defined as 0
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), TITLE, sf::Style::Titlebar | sf::Style::Close);
 	window->setVerticalSyncEnabled(true);
@@ -95,7 +102,7 @@ int main() {
 			update();	//logic
 		}
 		if (fps_time >= 1) {
-			window->setTitle(TITLE + " | fPS : " + std::to_string(fps_counter));
+			window->setTitle(TITLE + " | FPS : " + std::to_string(fps_counter));
 			fps_time -= 1;
 			fps_counter = 0;
 		}
@@ -146,6 +153,27 @@ void render()
 	//pipes
 	for (auto it = backgroundManager->getPipes().begin(); it != backgroundManager->getPipes().end(); ++it)
 	{
+		float x = it->getPosition().x;
+		float y = it->getPosition().y;
+		//lower pipes
+		if (it->getPipeDirection() == UP)
+		{
+			for (int i = 0; i < y; i += Pipe::redShaftTexture.getSize().y)
+			{
+				if (it->getPipeColor() == RED_PIPE)
+				{
+					Pipe::redShaft.setPosition(x, i);
+					window->draw(Pipe::redShaft);
+				}
+				else if (it->getPipeColor() == GREEN_PIPE)
+				{
+					Pipe::greenShaft.setPosition(x, i);
+					window->draw(Pipe::greenShaft);
+				}
+			}
+		}
+		//upper pipe
+		it->setPosition(x, y);
 		window->draw(*it);
 	}
 	//ground
@@ -174,11 +202,28 @@ void detectCollisions()
 	//pipes
 	for (auto it = backgroundManager->getPipes().begin(); it != backgroundManager->getPipes().end(); it++)
 	{
+		//pipe
 		if (it->intersects(player))
 		{
 			audioManager.playHit();
 			RUNNING = false;
 			return;
+		}
+		//upper part of the pipe
+		if (it->getPipeDirection() == UP)
+		{
+			float x_player = player.getPosition().x + player.getSize().x;
+			float y_player = player.getPosition().y;
+			float min_x = it->getPosition().x;
+			float max_x = min_x + it->getSize().x;
+			float y = it->getPosition().y;
+			if(x_player > min_x && x_player < max_x)
+				if (y_player < y)
+				{
+					audioManager.playHit();
+					RUNNING = false;
+					return;
+				}
 		}
 	}
 }
@@ -259,4 +304,15 @@ void freezeWindow(double seconds)
 		}
 		time += tempClock.restart().asSeconds();
 	}
+}
+
+void initializePipeStaticVars()
+{
+	Pipe::redShaftTexture.loadFromFile("assets\\sprites\\pipe-red-shaft.png");
+	Pipe::greenShaftTexture.loadFromFile("assets\\sprites\\pipe-green-shaft.png");
+	Pipe::redShaft.setTexture(&Pipe::redShaftTexture);
+	Pipe::greenShaft.setTexture(&Pipe::greenShaftTexture);
+	//it is very important to resize the rect
+	Pipe::redShaft.setSize(sf::Vector2f(Pipe::redShaftTexture.getSize().x, Pipe::redShaftTexture.getSize().y));
+	Pipe::greenShaft.setSize(sf::Vector2f(Pipe::greenShaftTexture.getSize().x, Pipe::greenShaftTexture.getSize().y));
 }
