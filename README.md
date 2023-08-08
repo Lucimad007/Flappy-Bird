@@ -1,7 +1,6 @@
 # Flappy Bird
 
-![Flappy-Bird-screenshot](https://github.com/Lucimad007/Flappy-Bird/assets/122006049/6eee1b8b-f919-4bd3-ab6b-a5e351780608)
-
+![Flappy-Bird-screenshot](https://github.com/Lucimad007/Flappy-Bird/blob/main/Flappy-Bird-screenshot.png?raw=true)
 
 ## Introduction
 Flappy Bird is a recreation of the classic mobile game using SFML (Simple and Fast Multimedia Library). The objective of the game is to navigate a bird through a series of pipes without touching them. It's a simple yet addictive game that challenges your reflexes and timing.
