@@ -1,6 +1,6 @@
 #include "pipe.h"
 
-Pipe::Pipe(int x, int y,PipeDirection direction, PipeColor pipeColor)
+Pipe::Pipe(double x, double y,PipeDirection direction, PipeColor pipeColor)
 {
 	this->pipeColor = pipeColor;
 	pipeDirection = direction;

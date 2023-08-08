@@ -8,7 +8,7 @@ enum PipeColor {GREEN_PIPE, RED_PIPE};
 class Pipe : public sf::RectangleShape
 {
 public:
-	Pipe(int x, int y, PipeDirection direction, PipeColor pipeColor);
+	Pipe(double x, double y, PipeDirection direction, PipeColor pipeColor);
 	Pipe(const Pipe&);		//do not forget to implement that because we are inheritancing another class and we might encounter problems when our code need copy constructor , like std::list<Pipe> scenario
 	PipeDirection getPipeDirection();
 	bool intersects(const Player& player) const;

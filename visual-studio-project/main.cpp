@@ -12,7 +12,7 @@ const int HEIGHT = 500;
 const int FPS_CAP = 60;		//frames per second
 const int UPS_CAP = 60;		//updates per second
 const double UPDATE_TIME = 1.0 / 60.0;
-int Player::SPEED_INIT = 0.5f;
+double Player::SPEED_INIT = 1.5f;
 double Player::Y_INIT = HEIGHT / 2;
 double Player::X_INIT = WIDTH / 3;
 const std::string TITLE = "Flappy Bird";
@@ -158,7 +158,7 @@ void render()
 		//lower pipes
 		if (it->getPipeDirection() == UP)
 		{
-			for (int i = 0; i < y; i += Pipe::redShaftTexture.getSize().y)
+			for (double i = 0; i < y; i += Pipe::redShaftTexture.getSize().y)
 			{
 				if (it->getPipeColor() == RED_PIPE)
 				{
@@ -247,7 +247,7 @@ void getReady()
 	sf::Texture readyTexture, flappyBirdLogoTexture, number3Texture, number2Texture, number1Texture, birdTexture;
 	sf::Sprite bird, logo, ready, number1, number2, number3;
 	sf::Color backgroundColor(153, 217, 234);
-	int default_x = window->getSize().x/2, default_y = window->getSize().y/2, gap = 80;
+	double default_x = window->getSize().x/2, default_y = window->getSize().y/2, gap = 80;
 	birdTexture.loadFromFile("assets\\sprites\\yellowbird-upflap.png");
 	readyTexture.loadFromFile("assets\\sprites\\ready.png");
 	flappyBirdLogoTexture.loadFromFile("assets\\sprites\\flappy-bird-logo.png");

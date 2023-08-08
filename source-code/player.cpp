@@ -5,7 +5,7 @@
 extern BackgroundManager* backgroundManager;
 extern AudioManager audioManager;
 
-Player::Player(int x, int y, int speed)
+Player::Player(double x, double y, double speed)
 {
 	this->setSize(sf::Vector2f(width, height));
 	this->setPosition(x, y);

@@ -16,7 +16,7 @@ void Button::isClicked()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		int x_mouse, y_mouse, min_x, min_y, max_x, max_y;
+		double x_mouse, y_mouse, min_x, min_y, max_x, max_y;
 		x_mouse = sf::Mouse::getPosition(*window).x;
 		y_mouse = sf::Mouse::getPosition(*window).y;
 		min_x = this->getPosition().x;

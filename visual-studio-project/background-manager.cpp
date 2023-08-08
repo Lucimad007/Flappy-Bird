@@ -27,8 +27,8 @@ BackgroundManager::BackgroundManager(sf::RenderWindow* inputWindow)
 
 void BackgroundManager::drawDay()
 {
-	int size = dayTexture.getSize().x;
-	for (int i = 0; i < window->getSize().x; i += size)
+	double size = dayTexture.getSize().x;
+	for (double i = 0; i < window->getSize().x; i += size)
 	{
 		daySprite.setPosition(sf::Vector2f(i, 0));
 		window->draw(daySprite);
@@ -38,8 +38,8 @@ void BackgroundManager::drawDay()
 
 void BackgroundManager::drawNight()
 {
-	int size = nightTexture.getSize().x;
-	for (int i = 0; i < window->getSize().x; i += size)
+	double size = nightTexture.getSize().x;
+	for (double i = 0; i < window->getSize().x; i += size)
 	{
 		nightSprite.setPosition(sf::Vector2f(i, 0));
 		window->draw(nightSprite);
@@ -50,7 +50,7 @@ void BackgroundManager::drawNight()
 void BackgroundManager::drawGround()
 {
 	horizontalOffset -= groundSpeed;
-	int size = groundTexture.getSize().x;
+	double size = groundTexture.getSize().x;
 	if (horizontalOffset <= -size)		//ground moves backward so we think we are moving forward
 		horizontalOffset = 0;
 
@@ -95,7 +95,7 @@ void BackgroundManager::drawScore()
 	
 	tempScore = score;
 	int figure = 0;
-	int last_X = window->getSize().x - scoreGapRelativeToWindow;
+	double last_X = window->getSize().x - scoreGapRelativeToWindow;
 	for (int i = 0; i < figures; i++)
 	{
 		figure = tempScore % 10;
@@ -133,7 +133,7 @@ void BackgroundManager::generatePrimaryPipes()
 {	
 	PipeColor color = isDay() ? GREEN_PIPE : RED_PIPE;
 	Pipe pipeForSize(0, 0, UP, color);
-	for (int i = window->getSize().x / 2; i < window->getSize().x; i += pipeForSize.getSize().x * 3)
+	for (double i = window->getSize().x / 2; i < window->getSize().x; i += pipeForSize.getSize().x * 3)
 	{
 		if((int)pipesHeightRelativeToGround % 20)
 			pipesHeightRelativeToGround += rand() % 6 * 10;
@@ -168,7 +168,7 @@ void BackgroundManager::movePipes(double offset)
 void BackgroundManager::updatePipes()
 { 
 	Pipe lastPipe(0, 0, UP, GREEN_PIPE);
-	int max_x = 0;
+	double max_x = 0;
 
 	for (auto it = pipes.begin(); it != pipes.end(); ++it)
 	{

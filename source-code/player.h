@@ -7,7 +7,7 @@ enum BirdState {UP_WING, MID_WING, DOWN_WING};
 class Player : public sf::RectangleShape
 {
 public:
-	Player(int x = 0, int y = 0, int speed = 0);
+	Player(double x = 0, double y = 0, double speed = 0);
 
 	double getSpeed();
 	void setSpeed(double speed);
@@ -33,6 +33,6 @@ private:
 	BirdState birdState = UP_WING;
 public:
 	static double X_INIT, Y_INIT;
-	static int SPEED_INIT;
+	static double SPEED_INIT;
 };
 
