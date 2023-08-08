@@ -10,6 +10,8 @@ Flappy Bird is a recreation of the classic mobile game using SFML (Simple and Fa
 - Randomly generated pipe obstacles
 - Score tracking
 - Game over screen with the option to restart
+- Day and Night cycle
+- Once you reached 1000 scores your bird will be red
 
 ## Getting Started
 
